@@ -1,7 +1,7 @@
-aws_bucket_region      = "us-east-2"           #YOUR_BUCKET_REGION
-aws_bucket_name        = "kymani-bucket2"  #YOUR_BUCKET_NAME
-deployment_environment = "kymani"           #DEPLOYMENT_ENVIRONMENT
-deployment_name        = "aws-network"           #DEPLOYMENT_NAME
+aws_bucket_region      = "us-east-2"      #YOUR_BUCKET_REGION
+aws_bucket_name        = "kymani-bucket2" #YOUR_BUCKET_NAME
+deployment_environment = "kymani"         #DEPLOYMENT_ENVIRONMENT
+deployment_name        = "aws-network"    #DEPLOYMENT_NAME
 
 aws_network_settings = {
   main-vpc = {
@@ -19,5 +19,3 @@ aws_network_settings = {
     }
   }
 }
-
-

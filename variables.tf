@@ -34,8 +34,6 @@ variable "aws_network_settings" {
     enable_vpn_gateway = optional(bool)
     tags               = optional(map(string))
   }))
-  default     = {}
-}  
+  default = {}
+}
 #   description = ""
-
-

@@ -9,7 +9,7 @@ We need terraform version 1.9.7 , for this you need to insall it if you do not h
  tfenv install 1.8.1
  echo 'export PATH="$HOME/.tfenv/bin:$PATH"' >> ~/.zshrc
  source ~/.zshrc
- tfenv use 1.9.7 
+ tfenv use 1.9.7
  terraform -version
  ```
 
@@ -17,4 +17,11 @@ We need terraform version 1.9.7 , for this you need to insall it if you do not h
 source set-env.sh kymani.tfvars
 terraform plan -var-file kymani.tfvars
 terraform apply -var-file kymani.tfvars
+```
+
+```
+brew install pre-commit
+pre-commit --version
+brew install shellcheck
+pre-commit run --all-files
 ```

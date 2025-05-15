@@ -50,5 +50,3 @@ output "numbered_public_subnet_ids" {
 output "numbered_private_subnet_ids" {
   value = { for idx, subnet_id in flatten([for key, mod in module.vpc : mod.private_subnets]) : format("private_subnet %d", idx + 1) => subnet_id }
 }
-
-

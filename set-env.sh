@@ -1,4 +1,3 @@
-# 
 #!/bin/bash
 
 # Check if the tfvars file is provided as an argument
@@ -52,9 +51,7 @@ if aws s3api head-bucket --bucket "$BUCKET_NAME" --profile "$AWS_PROFILE" 2>/dev
   echo "S3 bucket $BUCKET_NAME already exists."
 else
   echo "Creating S3 bucket $BUCKET_NAME in region $AWS_BUCKET_REGION..."
-  aws s3api create-bucket --bucket "$BUCKET_NAME" --region "$AWS_BUCKET_REGION" --create-bucket-configuration LocationConstraint="$AWS_BUCKET_REGION" --profile "$AWS_PROFILE"
-  
-  if [[ $? -ne 0 ]]; then
+  if ! aws s3api create-bucket --bucket "$BUCKET_NAME" --region "$AWS_BUCKET_REGION" --create-bucket-configuration LocationConstraint="$AWS_BUCKET_REGION" --profile "$AWS_PROFILE"; then
     echo "Error: Failed to create the S3 bucket."
     return 1
   else
@@ -65,9 +62,7 @@ fi
 # Create the necessary prefixes (folders) in the S3 bucket
 PREFIX_PATH="$DEPLOYMENT_NAME/$DEPLOYMENT_ENVIRONMENT/"
 echo "Creating prefixes $PREFIX_PATH in the S3 bucket $BUCKET_NAME..."
-aws s3api put-object --bucket "$BUCKET_NAME" --key "$PREFIX_PATH" --profile "$AWS_PROFILE"
-
-if [[ $? -ne 0 ]]; then
+if ! aws s3api put-object --bucket "$BUCKET_NAME" --key "$PREFIX_PATH" --profile "$AWS_PROFILE"; then
   echo "Error: Failed to create prefixes in the S3 bucket."
   return 1
 else
