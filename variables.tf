@@ -35,6 +35,7 @@ variable "aws_network_settings" {
     tags               = optional(map(string))
   }))
   default     = {}
+}  
 #   description = ""
 
 
